@@ -5,6 +5,9 @@ namespace Maris\Symfony\Geo\Model\Entity;
 
 
 use Maris\Interfaces\Geo\Aggregate\LocationAggregateInterface;
+use Maris\Interfaces\Geo\Factory\FeatureFactoryInterface;
+use Maris\Interfaces\Geo\Model\BoundsInterface;
+use Maris\Interfaces\Geo\Model\FeatureInterface;
 use Maris\Interfaces\Geo\Model\LocationInterface;
 use Maris\Symfony\Geo\Embeddable\Model\Entity\Location;
 
@@ -12,7 +15,7 @@ use Maris\Symfony\Geo\Embeddable\Model\Entity\Location;
  * Точка на карте.
  * Определяется значениями координат в градусах.
  */
-class Point implements LocationAggregateInterface
+class Point extends Geometry implements LocationAggregateInterface
 {
     private Location $location;
 
@@ -28,5 +31,25 @@ class Point implements LocationAggregateInterface
     public function getLocation(): LocationInterface
     {
         return $this->location;
+    }
+
+    public function getBounds(): BoundsInterface
+    {
+        return $this->location->getBounds();
+    }
+
+    public function toArray(): array
+    {
+        return $this->location->toArray();
+    }
+
+    public function toFeature(FeatureFactoryInterface $factory): FeatureInterface
+    {
+        return $this->location->toFeature( $factory );
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->location->jsonSerialize();
     }
 }
