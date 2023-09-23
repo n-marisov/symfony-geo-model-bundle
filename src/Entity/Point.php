@@ -52,4 +52,9 @@ class Point extends Geometry implements LocationAggregateInterface
     {
         return $this->location->jsonSerialize();
     }
+
+    public function getGeometry(): ?LocationInterface
+    {
+        return $this->location;
+    }
 }
