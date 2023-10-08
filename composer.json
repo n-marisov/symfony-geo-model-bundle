@@ -18,14 +18,8 @@
     "doctrine/orm": "^2.0",
     "doctrine/doctrine-bundle": "^2.8",
     "maris/geo-interfaces": "*",
-    "maris/symfony-geo-embeddable-model-bundle": "dev-master"
+    "maris/symfony-geo-embeddable-model-bundle": "*"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/n-marisov/symfony-geo-embeddable-model-bundle.git"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "Maris\\Symfony\\Geo\\Model\\": "src/"
